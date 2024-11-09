@@ -2,21 +2,20 @@ import { Controller, Get, Param, ParseIntPipe } from '@nestjs/common';
 
 @Controller('assignments')
 export class AssignmentController {
-  
-  @Get('prime/:number')
-  checkPrime(@Param('number', ParseIntPipe) number: number): { isPrime: boolean } {
-    return { isPrime: this.isPrime(number) };
+
+  @Get('factorial/:number')
+  calculateFactorial(@Param('number', ParseIntPipe) number: number): { factorial: number } {
+    return { factorial: this.factorial(number) };
   }
 
-  private isPrime(num: number): boolean {
-    if (num <= 1) return false;  // numbers less than 2 are not prime
-    if (num <= 3) return true;   // 2 and 3 are prime numbers
-    if (num % 2 === 0 || num % 3 === 0) return false; // eliminate multiples of 2 and 3
-
-    // Check from 5 up to the square root of num
-    for (let i = 5; i * i <= num; i += 6) {
-      if (num % i === 0 || num % (i + 2) === 0) return false;
+  private factorial(num: number): number {
+    if (num < 0) return null; // Factorial is not defined for negative numbers
+    if (num === 0 || num === 1) return 1; // Factorial of 0 and 1 is 1
+    
+    let result = 1;
+    for (let i = 2; i <= num; i++) {
+      result *= i;
     }
-    return true;
+    return result;
   }
 }
