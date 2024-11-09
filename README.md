@@ -1,4 +1,4 @@
-John Magno Magno- BSIT-4C
+John Paul Magno- BSIT-4C
 Academic purposes//ITECT-116
 ASSIGNMENT 1-3:
 Assignment 1: Fibonacci Sequence Generator
